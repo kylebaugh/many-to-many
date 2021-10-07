@@ -1,0 +1,11 @@
+DROP TABLE playlist_track;
+DROP TABLE playlist;
+DROP TABLE invoice_line;
+DROP TABLE invoice;
+DROP TABLE customer;
+DROP TABLE employee;
+DROP TABLE track;
+DROP TABLE genre;
+DROP TABLE media_type;
+DROP TABLE album;
+DROP TABLE artist;
