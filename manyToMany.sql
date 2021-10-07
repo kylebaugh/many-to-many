@@ -1,3 +1,5 @@
+-- ** START by running the commands in the clearSandbox.sql file in the postgres.devmountain.com database ** --
+
 -- Picking up students from School Example
 
 -- Martha picks up students each day
@@ -87,14 +89,16 @@ CREATE TABLE parent_child(
 INSERT INTO parent_child
 (parent_id, child_id)
 VALUES
-('4', '1'), ('4', '2'), ('5', '1'), ('5', '2'), ('6', '3'), ('6', '4'), ('6, 5');
--- ('', ''), ('', ''), ('', ''), ('', ''), ('', ''), ('', ''), ('', '');
+(1, 1), (1, 2), (2, 1), (2, 2), (3, 3), (3, 4);
 
 -- We can see the full list by running a query:
 SELECT * FROM parent_child;
 
--- Now, when someone comes to pick up their kids, we can run a quick check to see who they are authorized to pick up.
-SELECT * FROM parent_child
+-- Now, when someone comes to pick up their kids, we can run a quick JOIN query to see who they are authorized to pick up.
+SELECT pc.parent_child_id, c.child_id, c.child_name, p.parent_id, p.parent_name
+FROM parent_child pc
+JOIN parent p ON pc.parent_id = p.parent_id
+JOIN child c ON pc.child_id = c.child_id
 WHERE parent_id = 4;
 
 -- This table BRIDGES the distance between the Parent and Child tables. 
@@ -141,3 +145,9 @@ VALUES
 (1, 1), (1, 3), (2, 2), (2, 3), (3, 5), (3, 4);
 
 SELECT * FROM invoice_details;
+
+-- JOIN Query to view all data together
+SELECT invoice_details_id, p.product_id, p.product_name, i.invoice_id, i.invoice_date
+FROM invoice_details id
+JOIN invoice i ON id.invoice_id = i.invoice_id
+JOIN product p on id.product_id = p.product_id;
