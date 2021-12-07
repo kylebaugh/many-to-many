@@ -4,10 +4,9 @@
 
 ### Picking up students from School Example
 
-- Martha picks up students each day. She is also authorized to get them from school if they are sick or injured.
-
-- To keep track of this, we could set up two tables
-- We'll start with the Parent table, and add a few to the list
+Martha picks up students each day. She is also authorized to get them from school if they are sick or injured.
+To keep track of this, we could set up two tables!
+We'll start with the Parent table, and add a few to the list.
 
 ```
 CREATE TABLE parent(
@@ -21,13 +20,13 @@ VALUES
 ('Martha'), ('Johnathan'), ('Bernadette');
 ```
 
-- We can run a query to allow us to see the parents and their associated IDs
+**We can run a query to allow us to see the parents and their associated IDs.**
 
 ```
 SELECT * FROM parent;
 ```
 
-- Once we have those IDs, we can create our child table, and add children to it
+**Once we have those IDs, we can create our child table, and add children to it.**
 
 ```
 CREATE TABLE child(
@@ -42,7 +41,7 @@ VALUES
 ('Joey', 1), ('Brittney', 1), ('Carlos', 2), ('Samantha', 3);
 ```
 
-- When we run our query to get this data, we can see each child, and the ID of the person authorized to pick them up
+**When we run our query to get this data, we can see each child, and the ID of the person authorized to pick them up.**
 
 ```
 SELECT * FROM child;
@@ -61,7 +60,8 @@ I present: The parent_child table!
 Instead of adding parent IDs directly to the child table, we can create two independent tables, and then BRIDGE 
 the difference between them. 
 
-The Parent Table gets created the same way: 
+
+**The Parent Table gets created the same way:**
 
 ```
 CREATE TABLE parent(
@@ -76,7 +76,7 @@ VALUES
 ('Martha'), ('Johnathan'), ('Bernadette');
 ```
 
-- However, now the Child table no longer requires the parent_id
+**However, the Child table will no longer need the column for parent_id.**
 
 ```
 CREATE TABLE child(
@@ -90,7 +90,7 @@ VALUES
 ('Joey'), ('Brittney'), ('Carlos'), ('Samantha');
 ```
 
-- Now, we create/add information to our parent_child table
+**Now, we create/add information to our parent_child table.**
 
 ```
 CREATE TABLE parent_child(
@@ -100,7 +100,7 @@ CREATE TABLE parent_child(
 );
 ```
 
-- We get our parent_id from the parent table, and the child_id from the child table
+**We get our parent_id from the parent table, and the child_id from the child table.**
 
 ```
 INSERT INTO parent_child
@@ -109,13 +109,13 @@ VALUES
 (1, 1), (1, 2), (2, 1), (2, 2), (3, 3), (3, 4);
 ```
 
-- We can see the full list by running a query:
+**We can see the full list by running a query:**
 
 ```
 SELECT * FROM parent_child;
 ```
 
-- Now, when someone comes to pick up their kids, we can run a quick JOIN query to see who they are authorized to pick up.
+**Now, when someone comes to pick up their kids, we can run a quick JOIN query to see who they are authorized to pick up.**
 
 ```
 SELECT pc.parent_child_id, c.child_id, c.child_name, p.parent_id, p.parent_name
@@ -125,7 +125,7 @@ JOIN child c ON pc.child_id = c.child_id
 WHERE parent_id = 4;
 ```
 
-- This table BRIDGES the distance between the Parent and Child tables. 
+**This table BRIDGES the distance between the Parent and Child tables.**
 
 
 
