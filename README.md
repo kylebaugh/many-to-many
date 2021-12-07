@@ -1,4 +1,4 @@
-# Many to Many (or Bridge) Table Breakdown
+# Many-to-Many (or Bridge) Table Breakdown
 
 ## START by running the commands in the clearSandbox.sql file in the postgres.devmountain.com database
 
@@ -125,6 +125,7 @@ WHERE parent_id = 4;
 ```
 
 **This table BRIDGES the distance between the Parent and Child tables.**
+
 
 
 
